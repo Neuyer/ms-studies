@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: api-gateway
+server:
+  port: 8765
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+ribbon:
+  ConnectTimeout: 10000
+  ReadTimeout: 20000
+
+zuul:
+  routes:
+    quotes:
+      service-id: ms-quotes
+      path: /ms-quotes/**
+    consumer:
+      service-id: q-consumer
+      path: /q-consumer/**
+
+  opentracing:
+    jaeger:
+      udp:
+        sender:
+          host: localhost #udp host for sender. By default Jaeger libraries use a UDP sender to report finished spans to the jaeger-agent daemon
+          port: 6831 # udp port
+      log-spans: true #logs the spans in console
