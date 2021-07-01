@@ -20,4 +20,11 @@ public class QuoteController {
 
         return new ResponseEntity<String>(message, HttpStatus.OK);
     }
+
+    @GetMapping("/mot")
+    public ResponseEntity<String> getMot() {
+        String message = quoteClient.getMot();
+
+        return new ResponseEntity<String>(message, HttpStatus.OK);
+    }
 }

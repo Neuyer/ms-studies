@@ -15,6 +15,11 @@ public class QuotesController {
         return new ResponseEntity<String>("Bom dia!", HttpStatus.OK);
     }
 
+    @GetMapping("/mot")
+    public ResponseEntity<String> getMotivacaoLucas() {
+        return new ResponseEntity<String>("Vc consegue Lucas!!!!", HttpStatus.OK);
+    }
+
     @GetMapping("/error")
     public ResponseEntity<String> getError() {
         throw new RuntimeException("shiiiiii");

@@ -23,3 +23,11 @@ zuul:
     consumer:
       service-id: q-consumer
       path: /q-consumer/**
+
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          servlet:
+            DispatcherServlet: DEBUG
